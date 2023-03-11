@@ -5,7 +5,7 @@
 
 import styled from "styled-components";
 
-import * as Btn from "../../styles/revise_delete_Btn";
+import * as Btn from "../../styles/common/revise_delete_Btn";
 import * as CommentStyle from "../../styles/communityDetail/commentStyle"; // 댓글 입력창 스타일
 
 function Comment() {
@@ -22,8 +22,8 @@ function Comment() {
                 <CommentStyle.User_Info>
                   <img src="/image/backtest.jpg"/> 
                   <div>
-                    <p>지윤이 엄마(닉네임)</p>
-                    <p>2분 전(시간)</p>
+                    <p>지윤이 엄마</p>
+                    <p>2 분 전</p>
                   </div>
                 </CommentStyle.User_Info>
                 <Btn.Revise_Delete_Btn>
