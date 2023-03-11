@@ -11,7 +11,10 @@ function PopularPost() {
 
   return(
     <popularPostStyle.Container>
-      <h1>지금 인기있는 글을 확인해 보세요!</h1>
+      <h1>
+        <span>지금 인기있는 글을 확인해 보세요!</span>
+        <span>실시간 인기글을 확인해 보세요!</span>
+      </h1>
       
       <popularPostStyle.Container__PopularPost>
         <popularPostStyle.Popular_Post>
@@ -22,7 +25,8 @@ function PopularPost() {
                   <tr>
                     <td>01</td>
                     <td>잡담</td>
-                    <td>제목</td>
+                    <td>제목을 길게길게길게길게길게길게게길게길게길게길게게길게게길게길게길게길게게길게길게길게게길게길게길게</td>
+                    <td>[14]</td>
                   </tr>
                 )
               })
@@ -38,7 +42,8 @@ function PopularPost() {
                   <tr>
                     <td>01</td>
                     <td>잡담</td>
-                    <td>제목</td>
+                    <td>제목을 길게길게길게길게길게길게게길게길게길게길게게길게게길게길게길게길게게길게길게길게게길게길게길게</td>
+                    <td>[14]</td>
                   </tr>
                 )
               })
