@@ -40,6 +40,7 @@ gap: 16px;
   width: 100%;
   height: 286px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 & > div { // 이미지 관련 버튼

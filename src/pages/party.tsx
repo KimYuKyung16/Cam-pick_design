@@ -1,3 +1,5 @@
+import { useAppSelector } from "../redux/hooks";
+
 import CardDetail from "../components/party/cardDetail"; // 카드 상세 화면
 import Header from '../components/layout/header'; 
 import Search from '../components/party/search'; // 감섹
@@ -9,10 +11,14 @@ import styled from "styled-components";
 
 
 function Main() {
+  let cardDetailModalState = useAppSelector((state  => state.partyDetailModal));
 
   return(
     <Container>
-      {/* <CardDetail /> */}
+      <CardDetailComponent state={cardDetailModalState.state}>
+        <CardDetail />
+      </CardDetailComponent>
+
      
       <Header />
       <Search />
@@ -24,6 +30,14 @@ function Main() {
 
 const Container = styled.div`
 
+`
+
+interface ICardDetailModalState {
+  state: boolean;
+}
+
+const CardDetailComponent = styled.section`
+  display: ${(props: ICardDetailModalState) => props.state ? 'block' : 'none'};
 `
 
 export default Main;

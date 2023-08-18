@@ -43,7 +43,7 @@ display: flex;
 flex-direction: column;
 width: 100%;
 background-color: #FFEFE9;
-padding: 40px 20px 70px 20px;
+padding: 32px 20px 70px 20px;
 max-width: 1119px;
 `
 

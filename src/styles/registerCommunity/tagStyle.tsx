@@ -18,10 +18,15 @@ flex-wrap: wrap;
 gap: 4px;
 `
 
+interface Selected_Props {
+  color: string;
+  selected: boolean;
+}
+
 /* 태그 */
 export const Tag = styled.input`
-background-color: #FDFBF8;
-color: #FF6F3D;
+background-color: ${(props: Selected_Props) => props.selected ? props.color : '#FDFBF8'};
+color: ${(props: Selected_Props) => props.selected ? '#FDFBF8' : props.color};
 font-weight: 500;
 font-size: 1.6rem;
 padding: 10px 25px;
@@ -30,7 +35,7 @@ border-radius: 8px;
 cursor: pointer;
 
 &:hover {
-  background-color: #FF6F3D;
+  background-color: ${(props: Selected_Props) => props.color};
   color: #FDFBF8;
 }
 

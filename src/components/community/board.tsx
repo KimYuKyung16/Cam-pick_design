@@ -9,6 +9,7 @@ import styled from "styled-components";
 import * as BoardStyle from "../../styles/community/boardStyle"; // 게시판 스타일
 
 function Board() {
+  const navigate = useNavigate();
 
   return(
     <BoardStyle.Container>
@@ -19,7 +20,7 @@ function Board() {
           <img src="/image/search_icon.svg"/>
           <input type="text" placeholder="내가 원하는 모임을 찾아보세요!"/>
         </BoardStyle.Container__Search>
-        <input type="button" value="글쓰기"/>
+        <input type="button" value="글쓰기" onClick={() => {navigate('/community/register')}}/>
       </BoardStyle.Container__Menu>
 
       <BoardStyle.Container__Filter>

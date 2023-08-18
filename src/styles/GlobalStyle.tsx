@@ -11,6 +11,15 @@
      padding: 0;
      margin: 0;
    }
+
+   input {
+    outline: none;
+   }
+
+   textarea {
+    resize: none;
+    outline: none;
+   }
    
    body {
     

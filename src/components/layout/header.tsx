@@ -1,31 +1,59 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+
+import { decryptAccessToken } from "../../utils/decryptAccessToken";
+
 import styled from "styled-components";
 
 import Navbar from "./navbar";
 
 function Header_Nav() {
+  const navigate = useNavigate();
+  let [loginState, setLoginState] = useState<boolean>();
 
-  let [loginState, setLoginState] = useState<boolean>(true);
+  const accessToken = localStorage.getItem('accessToken');
+
+  const clickLogoutBtn = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('encryptedAccessToken');
+    localStorage.removeItem('userIdx');
+    window.location.replace('/')
+  }
+
+  const confirmLoginState = () => {
+    if (accessToken === decryptAccessToken()) setLoginState(true);
+    else {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('encryptedAccessToken');
+      localStorage.removeItem('userIdx');
+    }
+  }
+
+  useLayoutEffect(() => {
+    confirmLoginState();
+  }, [accessToken])
+
 
   return(
     <Header>
       <Header__logo>
         <h1>로고 위치</h1>
         <LoginState_mobile state={loginState}>
-          <input type="button" value="my"/>
-          <input type="button"/>
-          <Login_Logout_Btn type="button" value="로그인" />
-          <Login_Logout_Btn type="button" value="로그아웃" />
+          <input type="button" value="my" onClick={() => { navigate("/mypage") }}/>
+          <input type="button" onClick={() => { navigate("/mypage/notification") }}/>
+          <Login_Logout_Btn type="button" value="로그인" onClick={() => { navigate("/login") }}/>
+          <Login_Logout_Btn type="button" value="로그아웃" onClick={ clickLogoutBtn }/>
         </LoginState_mobile>
       </Header__logo>
 
       <Navbar />
       
       <Header__loginState state={loginState}>
-        <input type="button" value="my"/>
-        <input type="button"/>
-        <Login_Logout_Btn type="button" value="로그인" />
-        <Login_Logout_Btn type="button" value="로그아웃" />
+        <input type="button" value="my" onClick={() => { navigate("/mypage") }}/>
+        <input type="button" onClick={() => { navigate("/mypage/notification") }}/>
+        <Login_Logout_Btn type="button" value="로그인" onClick={() => { navigate("/login") }}/>
+        <Login_Logout_Btn type="button" value="로그아웃" onClick={ clickLogoutBtn }/>
       </Header__loginState>
     </Header>
   );
@@ -167,6 +195,7 @@ gap: 10px;
   padding: 6px 5px;
   background: url( "/image/notification_icon.svg" ) no-repeat center center;
   background-size: 20px;
+  
 }
 
 & > :nth-child(3) { // 로그인 버튼

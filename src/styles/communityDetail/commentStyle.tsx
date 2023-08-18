@@ -145,3 +145,13 @@ padding: 10px 12px;
   }
 } 
 `
+
+interface IReplyState {
+  state: boolean
+}
+
+export const Reply = styled.div`
+display: ${(props: IReplyState) => props.state ? 'block' : 'none'};
+/* background-color: aqua; */
+width: 100%;
+`

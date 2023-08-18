@@ -3,6 +3,13 @@
  * 
  */
 
+import { useState } from "react";
+import { useAppSelector } from "../redux/hooks";
+import { partyInfoActions } from '../redux/modules/party';
+
+import { registerParty } from "../apis/api/party";
+import { addUserIdx } from "../utils/addUserIdx";
+
  import styled from 'styled-components';
 
  import Header from '../components/layout/header'; 
@@ -18,7 +25,25 @@
  
  
  function RegisterParty() {
- 
+  const partyInfo = useAppSelector(state => state.partyInfo);
+
+  /* 등록하기 버튼을 클릭했을 경우 */
+  const click_registerBtn = async () => {
+    
+    const fd = new FormData();
+    const changedPartyInfo = addUserIdx(partyInfo);
+
+    for (let entry of Object.entries(changedPartyInfo)) {
+      if (entry[0] === 'imageUrl' && partyInfo.imageUrl) fd.append("file", partyInfo.imageUrl);
+      else {
+        if (entry[1]) fd.append(entry[0], entry[1]); // (key, value)
+      }
+    }
+
+    const partyState = await registerParty(fd);
+    console.log(partyState)
+  }
+
    return(
      <Container>
        <Header />
@@ -30,7 +55,7 @@
           <Personnel />
           <Introduction />
           <Banner />
-          <input type="button"value="등록하기" />
+          <input type="button"value="등록하기" onClick={click_registerBtn}/>
        </Main>
        
        <Footer background={color.pri_sub}/>

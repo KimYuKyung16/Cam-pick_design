@@ -50,11 +50,17 @@ gap: 20px;
 }
 `
 
+interface ITagState {
+  state: boolean
+}
+
 export const Tag = styled.input`
 width: 82px;
 height: 41px;
-background: #FDFBF8;
-color: #FF6F3D;
+/* background: #FDFBF8;
+color: #FF6F3D; */
+background-color: ${(props:ITagState) => props.state ? "#FF6F3D" : "#FDFBF8"};
+color: ${(props:ITagState) => props.state ? "#FDFBF8" : "#FF6F3D"};
 font-weight: 700;
 font-size: 1.8rem;
 border-radius: 8px;

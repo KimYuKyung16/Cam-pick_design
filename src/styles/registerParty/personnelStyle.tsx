@@ -36,6 +36,7 @@ align-items: center;
 gap: 8px;
 
 & > input {
+  -moz-appearance: textfield; // firefox에서 화살표 제거
   border: none;
   width: 67px;
   height: 44px;
@@ -45,6 +46,12 @@ gap: 8px;
   border: 1px solid #E8D9D4;
   border-radius: 8px;
   padding: 0 8px;
+
+  // chrome, safari, edge, opera에서 화살표 제거
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
 }
 
 & > p {

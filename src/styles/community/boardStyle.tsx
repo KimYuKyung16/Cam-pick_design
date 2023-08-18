@@ -76,11 +76,15 @@ overflow: hidden;
 & > input { // 검색창
   width: 100%;
   background-color: #FDFBF8;
-  color: #7A7A7A;
+  color: #2C2C2C;
   font-weight: 700;
   font-size: 1.6rem;
   border: none;
   outline: none;
+
+  ::placeholder {
+    color: #7A7A7A;
+  }
 }
 
 @media screen and (max-width: 768px) { 
@@ -106,7 +110,7 @@ display: flex;
 flex-direction: row;
 overflow: auto; // 메뉴 넘치면 스크롤: pc화면인데 넘칠 경우 생각해봐야함. 모바일일 땐 ok
 padding: 24px 0 22px 0;
-gap: 20px;
+gap: 8px;
 
 /* 스크롤 제거 */
 -ms-overflow-style: none;
@@ -156,7 +160,6 @@ scrollbar-width: none;
 
 @media screen and (max-width: 768px) { 
   padding: 10px 0 10px 0;
-  gap: 8px;
 
   & > input {
     font-size: 1rem;

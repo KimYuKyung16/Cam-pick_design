@@ -3,19 +3,30 @@
  * 
  */
 
+import { useAppSelector } from "../redux/hooks";
+
+import { registerCommunity } from "../apis/api/community";
+
+
 import styled from 'styled-components';
 
 import Header from '../components/layout/header'; 
 import Tag from '../components/registerCommunity/tag' // 태그
-import Contents from '../components/registerCommunity/contents' // 태그
+import Contents from '../components/registerCommunity/contents' // 내용
 import Footer from '../components/layout/footer';
 
 import Mini_Navigate from '../styles/common/list_navigate';
 import color from '../styles/color'; // 색감 정보
  
  
-function RegisterParty() {
- 
+function RegisterCommunity() {
+  const contents = useAppSelector(state => state.commmunityContent);
+
+  /* 커뮤니티글 등록 */
+  const click_RegisterBtn = async() => { 
+    const test = await registerCommunity(contents);
+  }
+
    return(
      <Container>
        <Header />
@@ -24,7 +35,7 @@ function RegisterParty() {
           <h1>자유롭게 이야기를 써 보세요.</h1>
           <Tag />
           <Contents />
-          <input type="button"value="등록하기" />
+          <input type="button"value="등록하기" onClick={click_RegisterBtn}/>
        </Main>
        
        <Footer background={color.pri_sub}/>
@@ -95,4 +106,4 @@ function RegisterParty() {
 }
 `
  
- export default RegisterParty;
+ export default RegisterCommunity;

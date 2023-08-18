@@ -1,12 +1,16 @@
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import styled from "styled-components";
 
 function Navbar() {
+  const navigate = useNavigate();
 
   return(
     <Nav__Menu>
       <ul>
-        <li>찾아보기</li>
-        <li>커뮤니티</li>
+        <li onClick={() => { navigate('/')} }>찾아보기</li>
+        <li onClick={() => { navigate('/community')} }>커뮤니티</li>
         <li>글등록</li>
       </ul>
     </Nav__Menu>
@@ -34,6 +38,7 @@ width: auto;
     padding: 10px 4.5px;
     border-radius: 8px;
     white-space: nowrap;
+    cursor: pointer;
 
     &:hover {
       background-color: #FDFBF8;
